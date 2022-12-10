@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 const Header = (props) => {
   
@@ -9,7 +9,7 @@ const Header = (props) => {
       </div>
       <div>
         <div>Score : {props.score}</div>
-        <div>Best Score : {props. bestScore}</div>
+        <div>Best Score :{props.bestScore}</div>
         <p>Get points by clicking on an image but don't click on any more than once!</p>
       </div>
     </header>
