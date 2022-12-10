@@ -6,7 +6,6 @@ import hedwigPics from "../pictures/hedwig.jpg";
 import hermionePics from "../pictures/hermione.jpg";
 import malfoyPics from "../pictures/malfoy.webp";
 import voldermortPics from "../pictures/voldemort.webp";
-import Header from "./Header";
 
 import "../styles/style.css";
 
@@ -58,7 +57,6 @@ const Cards = (props) => {
 
   useEffect(() => {
     const randomizeOrder = (e) => {
-      let usedNumbers = [];
       function randomNumber() {
         let number = Math.floor(Math.random() * 6) + 1;
         return number;
@@ -78,6 +76,7 @@ const Cards = (props) => {
         }));
       }
     };
+   
 
     let event = document.querySelectorAll(".card");
     event.forEach((ev) => {
@@ -91,7 +90,55 @@ const Cards = (props) => {
     };
   }, [allCards]);
 
-  
+  const reSetClickedToFalse = () => {
+    for (let character in allCards) {
+      setAllCards((prevState) => ({
+        ...prevState,
+        [character]: {
+          key: allCards[character].key,
+          name: allCards[character].name,
+          imgUrl: allCards[character].imgUrl,
+          clicked: false,
+          order: allCards[character].order,
+        },
+      }));
+    }
+  }
+  const checkIfClick = (e) => {
+    
+    let point = props.score;
+    let characterKey = e.target.getAttribute("data-key");
+    for (let character in allCards) {
+      if (allCards[character].key === characterKey) {
+        if (allCards[character].clicked === true) {
+          reSetClickedToFalse();
+          props.setScore(0);
+          alert("You Lost");
+        } else if (allCards[character].clicked === false) {
+          setAllCards((prevState) => ({
+            ...prevState,
+            [character]: {
+              key: allCards[character].key,
+              name: allCards[character].name,
+              imgUrl: allCards[character].imgUrl,
+              clicked: true,
+              order: allCards[character].order,
+            },
+          }));
+          props.setScore(point+1);
+          if (point+1 > props.bestScore) {
+            props.setBestScore(point+1);
+          }
+          if (point+1 === 6) {
+            reSetClickedToFalse();
+            props.setScore(0);
+            alert("You have won!")
+          }
+        }
+      }
+    }
+  };
+
   return (
     <div>
       <div className="cardBox">
@@ -102,11 +149,13 @@ const Cards = (props) => {
               className="card"
               key={allCards[cards].key}
               style={{ order: allCards[cards].order }}
+              onClick={checkIfClick}
             >
               <img
                 data-key={allCards[cards].key}
                 src={allCards[cards].imgUrl}
                 className="characters"
+                alt={allCards[cards].name}
               ></img>
               <p>{allCards[cards].name}</p>
             </div>
