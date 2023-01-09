@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/static/css/main.947c4948.css",
+    "main.js": "/static/js/main.971668d7.js",
+    "static/media/hedwig.jpg": "/static/media/hedwig.5ac15c92f7ce9174ef22.jpg",
+    "static/media/hagrid.jpg": "/static/media/hagrid.67e8d6d0b274205df8f5.jpg",
+    "static/media/voldemort.webp": "/static/media/voldemort.fd851d367efe03973921.webp",
+    "static/media/harry.jpg": "/static/media/harry.2daf4c53aef7861fe0c7.jpg",
+    "static/media/wallpaper.webp": "/static/media/wallpaper.ebf38c07152c14f62311.webp",
+    "static/media/malfoy.webp": "/static/media/malfoy.d466d436d812f37f8d59.webp",
+    "static/media/hermione.jpg": "/static/media/hermione.9f7d2e18c847306efc80.jpg",
+    "index.html": "/index.html",
+    "main.947c4948.css.map": "/static/css/main.947c4948.css.map",
+    "main.971668d7.js.map": "/static/js/main.971668d7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.947c4948.css",
+    "static/js/main.971668d7.js"
+  ]
+}
